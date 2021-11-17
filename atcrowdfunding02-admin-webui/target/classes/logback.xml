@@ -5,7 +5,7 @@
               class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <!-- 日志输出的格式 -->
-            <!-- 按照顺序分别是： 时间、 日志级别、 线程名称、 打印日志的类、 日志主体 内容、 换行 -->
+            <!-- 按照顺序分别是： 时间、 日志级别(-5指固定占五个字符，为了对其)、 线程名称、 打印日志的类、 日志主体 内容、 换行 -->
             <pattern>[%d{HH:mm:ss.SSS}] [%-5level] [%thread] [%logger]
                 [%msg]%n</pattern>
         </encoder>

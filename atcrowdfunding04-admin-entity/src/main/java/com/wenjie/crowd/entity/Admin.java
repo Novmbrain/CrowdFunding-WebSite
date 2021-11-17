@@ -14,7 +14,6 @@ public class Admin {
     private String createTime;
 
     public Admin() {
-        System.out.println("使用无参构造器初始化Admin");
     }
 
     public Admin(Integer id, String loginAcct, String userPswd, String userName, String email, String createTime) {
