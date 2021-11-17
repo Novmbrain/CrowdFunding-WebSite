@@ -2,6 +2,7 @@ package com.wenjie.crowd.test;
 
 import com.wenjie.crowd.entity.Admin;
 import com.wenjie.crowd.mapper.AdminMapper;
+import com.wenjie.crowd.service.api.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -22,13 +23,16 @@ import java.sql.SQLException;
 //指定 Spring 给 Junit 提供的运行器类
 @RunWith(SpringJUnit4ClassRunner.class)
 //加载 Spring 配置文件的注解
-@ContextConfiguration(locations = { "classpath:spring-persist-mybatis.xml" })
+@ContextConfiguration(locations = { "classpath:spring-persist-mybatis.xml", "classpath:spring-persist-tx.xml" })
 public class CrowdTest {
     @Autowired
     private DataSource dataSource;
 
     @Autowired
     private AdminMapper adminMapper;
+
+    @Autowired
+    private AdminService adminService;
 
     @Test
     public void testDataSource() throws SQLException {
@@ -37,8 +41,6 @@ public class CrowdTest {
         // 2.打印数据库连接
         System.out.println(connection);
     }
-
-
 
     @Test
     public void testAdminMapperAutowired() {
@@ -74,6 +76,13 @@ public class CrowdTest {
         logger.error("Error level!!!");
         logger.error("Error level!!!");
         logger.error("Error level!!!");
+    }
+
+    @Test
+    public void testTx(){
+        Admin admin = new Admin(null, "jerry", "123456", "杰瑞", "jerry@qq.com", null);
+        adminService.saveAdmin(admin);
+
     }
 
 
