@@ -1,10 +1,13 @@
 package com.wenjie.crowd.service.impl;
 
 import com.wenjie.crowd.entity.Admin;
+import com.wenjie.crowd.entity.AdminExample;
 import com.wenjie.crowd.mapper.AdminMapper;
 import com.wenjie.crowd.service.api.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Wenjie FU
@@ -20,5 +23,9 @@ public class AdminServiceImpl implements AdminService {
 
         adminMapper.insert(admin);
 
+    }
+
+    public List<Admin> getAll() {
+        return adminMapper.selectByExample(new AdminExample());
     }
 }
